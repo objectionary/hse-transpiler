@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.hse-eolang</groupId>
   <artifactId>transpiler</artifactId>
   <name>eo-hse-transpiler</name>
-  <version>1.0.1</version>
-  <properties>
-    <runtime.version>1.0.1</runtime.version>
-    <maven.version>3.3.9</maven.version>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <kotlin.version>1.5.21</kotlin.version>
-  </properties>
-  <description>The EO Language transpiler by HSE</description>
+  <version>1.0.3</version>
+  <description>The EO Language Transcompiler by the HSE-EOLANG team</description>
   <url>https://github.com/hse-eolang/transpiler</url>
   <inceptionYear>2021</inceptionYear>
   <organization>
@@ -29,15 +23,28 @@
   <developers>
     <developer>
       <id>1</id>
-      <name>Yegor Bugayenko</name>
-      <email>yegor256@gmail.com</email>
-      <organization>yegor256.com</organization>
-      <organizationUrl>https://www.yegor256.com</organizationUrl>
+      <name>nlchar</name>
+      <email>contact.me@nlchar.rocks</email>
+      <url>https://github.com/nlchar</url>
+      <organization>HSE-EOLANG</organization>
+      <organizationUrl>https://github.com/HSE-Eolang/</organizationUrl>
       <roles>
         <role>Architect</role>
         <role>Developer</role>
       </roles>
-      <timezone>-7</timezone>
+      <timezone>Moscow</timezone>
+    </developer>
+    <developer>
+      <id>1</id>
+      <name>wsngit</name>
+      <url>https://github.com/wsngit</url>
+      <organization>HSE-EOLANG</organization>
+      <organizationUrl>https://github.com/HSE-Eolang/</organizationUrl>
+      <roles>
+        <role>Architect</role>
+        <role>Developer</role>
+      </roles>
+      <timezone>Moscow</timezone>
     </developer>
   </developers>
   <issueManagement>
@@ -50,21 +57,22 @@
     <url>https://github.com/HSE-Eolang/transpiler</url>
   </scm>
   <distributionManagement>
-  <snapshotRepository>
-    <id>ossrh</id>
-    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-  </snapshotRepository>
-  <repository>
-    <id>ossrh</id>
-    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-  </repository>
-</distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <kotlin.version>1.5.21</kotlin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
-    <dependency>
-      <groupId>org.ainslec</groupId>
-      <artifactId>picocog</artifactId>
-      <version>1.0.7</version>
-    </dependency>
     <dependency>
       <groupId>org.cactoos</groupId>
       <artifactId>cactoos</artifactId>
@@ -76,27 +84,9 @@
       <version>0.19.0</version>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>5.6.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.yaml</groupId>
-      <artifactId>snakeyaml</artifactId>
-      <version>1.26</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>io.github.hse-eolang</groupId>
       <artifactId>runtime</artifactId>
-      <version>${runtime.version}</version>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -113,6 +103,11 @@
       <groupId>com.google.googlejavaformat</groupId>
       <artifactId>google-java-format</artifactId>
       <version>1.9</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ainslec</groupId>
+      <artifactId>picocog</artifactId>
+      <version>1.0.7</version>
     </dependency>
   </dependencies>
   <build>
@@ -135,7 +130,9 @@
           </execution>
           <execution>
             <id>test-compile</id>
-            <goals> <goal>test-compile</goal> </goals>
+            <goals>
+              <goal>test-compile</goal>
+            </goals>
             <configuration>
               <sourceDirs>
                 <sourceDir>${project.basedir}/src/test/java</sourceDir>
@@ -147,7 +144,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.8.1</version>
         <executions>
           <!-- Replacing default-compile as it is treated specially by maven -->
           <execution>
@@ -191,70 +188,71 @@
   </build>
   <profiles>
     <!-- Deployment profile (required so these plugins are only used when deploying) -->
-      <profile>
-        <id>deploy</id>
-        <properties>
-          <javadoc.opts>-Xdoclint:none</javadoc.opts>
-          <kotlin.version>1.4.32</kotlin.version>
-        </properties>
-        <build>
-          <plugins>
-            <!-- Source plugin -->
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-source-plugin</artifactId>
-              <version>2.4</version>
-              <executions>
-                <execution>
-                  <id>attach-sources</id>
-                  <goals>
-                    <goal>jar-no-fork</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin>
-            <!-- Javadoc plugin -->
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-jar-plugin</artifactId>
-              <executions>
-                  <execution>
-                      <id>empty-javadoc-jar</id>
-                      <phase>package</phase>
-                      <goals>
-                          <goal>jar</goal>
-                      </goals>
-                      <configuration>
-                          <classifier>javadoc</classifier>
-                          <classesDirectory>${basedir}/javadoc</classesDirectory>
-                      </configuration>
-                  </execution>
-              </executions>
+    <profile>
+      <id>deploy</id>
+      <properties>
+        <javadoc.opts>-Xdoclint:none</javadoc.opts>
+        <kotlin.version>1.4.32</kotlin.version>
+      </properties>
+      <build>
+        <plugins>
+          <!-- Source plugin -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.2.1</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
-            <!-- GPG plugin -->
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-gpg-plugin</artifactId>
-              <version>1.6</version>
-              <executions>
-                  <execution>
-                      <id>sign-artifacts</id>
-                      <phase>verify</phase>
-                      <goals>
-                          <goal>sign</goal>
-                      </goals>
-                      <configuration>
-                          <!-- Prevent `gpg` from using pinentry programs -->
-                          <gpgArguments>
-                              <arg>--pinentry-mode</arg>
-                              <arg>loopback</arg>
-                          </gpgArguments>
-                      </configuration>
-                  </execution>
-              </executions>
-            </plugin>
-          </plugins>
-        </build>
-      </profile>
-    </profiles>
+          <!-- Javadoc plugin -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version>
+            <executions>
+              <execution>
+                <id>empty-javadoc-jar</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <classifier>javadoc</classifier>
+                  <classesDirectory>${basedir}/javadoc</classesDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- GPG plugin -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.0.1</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <!-- Prevent `gpg` from using pinentry programs -->
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

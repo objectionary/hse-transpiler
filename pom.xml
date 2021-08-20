@@ -13,7 +13,7 @@
     <kotlin.version>1.5.21</kotlin.version>
   </properties>
   <description>The EO Language transpiler by HSE</description>
-  <url>https://github.com/hse-eolang/eo_hse</url>
+  <url>https://github.com/hse-eolang/transpiler</url>
   <inceptionYear>2021</inceptionYear>
   <organization>
     <name>The HSE-EOLANG Team</name>
@@ -124,46 +124,54 @@
         <executions>
           <execution>
             <id>compile</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <jvmTarget>11</jvmTarget>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>initialize</phase>
-            <goals>
-              <goal>properties</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>default-compile</id>
-            <phase>none</phase>
-          </execution>
-          <execution>
-            <id>compile</id>
-            <phase>compile</phase>
             <goals>
               <goal>compile</goal>
             </goals>
             <configuration>
-              <forceJavacCompilerUse>true</forceJavacCompilerUse>
-              <showWarnings>true</showWarnings>
-              <compilerArgument>-Xlint:-serial</compilerArgument>
+              <sourceDirs>
+                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+              </sourceDirs>
             </configuration>
+          </execution>
+          <execution>
+            <id>test-compile</id>
+            <goals> <goal>test-compile</goal> </goals>
+            <configuration>
+              <sourceDirs>
+                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+              </sourceDirs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <executions>
+          <!-- Replacing default-compile as it is treated specially by maven -->
+          <execution>
+            <id>default-compile</id>
+            <phase>none</phase>
+          </execution>
+          <!-- Replacing default-testCompile as it is treated specially by maven -->
+          <execution>
+            <id>default-testCompile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>java-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>java-test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
@@ -187,6 +195,7 @@
         <id>deploy</id>
         <properties>
           <javadoc.opts>-Xdoclint:none</javadoc.opts>
+          <kotlin.version>1.4.32</kotlin.version>
         </properties>
         <build>
           <plugins>
@@ -242,7 +251,7 @@
               <configuration>
                 <doclint>none</doclint>
                 <additionalparam>${javadoc.opts}</additionalparam>
-                <excludePackageNames>org.eolang.maven:org.eolang.maven.*</excludePackageNames>
+                <excludePackageNames>io.github.hse_eolang.transpiler:io.github.hse_eolang.transpiler.*</excludePackageNames>
               </configuration>
             </plugin>
             <!-- GPG plugin -->

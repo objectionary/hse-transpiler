@@ -95,7 +95,7 @@
     </dependency>
     <dependency>
       <groupId>io.github.hse-eolang</groupId>
-      <artifactId>eo-runtime</artifactId>
+      <artifactId>runtime</artifactId>
       <version>${runtime.version}</version>
     </dependency>
     <dependency>

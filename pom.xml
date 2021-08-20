@@ -213,7 +213,6 @@
                 </execution>
               </executions>
             </plugin>
-
             <plugin>
               <groupId>org.jetbrains.dokka</groupId>
               <artifactId>dokka-maven-plugin</artifactId>
@@ -251,7 +250,7 @@
               <configuration>
                 <doclint>none</doclint>
                 <additionalparam>${javadoc.opts}</additionalparam>
-                <excludePackageNames>io.github.hse_eolang.transpiler:io.github.hse_eolang.transpiler.*</excludePackageNames>
+                <excludePackageNames>io.github.hse_eolang.transpiler.mediumcodemodel</excludePackageNames>
               </configuration>
             </plugin>
             <!-- GPG plugin -->

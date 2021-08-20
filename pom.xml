@@ -86,7 +86,7 @@
     <dependency>
       <groupId>io.github.hse-eolang</groupId>
       <artifactId>runtime</artifactId>
-      <version>1.0.2</version>
+      <version>LATEST</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>

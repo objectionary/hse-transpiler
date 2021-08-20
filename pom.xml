@@ -213,46 +213,24 @@
                 </execution>
               </executions>
             </plugin>
-            <plugin>
-              <groupId>org.jetbrains.dokka</groupId>
-              <artifactId>dokka-maven-plugin</artifactId>
-              <version>1.5.0</version>
-              <executions>
-                  <execution>
-                      <goals>
-                          <goal>javadocJar</goal>
-                      </goals>
-                  </execution>
-              </executions>
-              <configuration>
-                  <dokkaPlugins>
-                      <plugin>
-                          <groupId>org.jetbrains.dokka</groupId>
-                          <artifactId>kotlin-as-java-plugin</artifactId>
-                          <version>1.5.0</version>
-                      </plugin>
-                  </dokkaPlugins>
-              </configuration>
-            </plugin>
             <!-- Javadoc plugin -->
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-              <version>3.2.0</version>
+              <artifactId>maven-jar-plugin</artifactId>
               <executions>
-                <execution>
-                  <id>attach-javadocs</id>
-                  <goals>
-                    <goal>jar</goal>
-                  </goals>
-                </execution>
+                  <execution>
+                      <id>empty-javadoc-jar</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>jar</goal>
+                      </goals>
+                      <configuration>
+                          <classifier>javadoc</classifier>
+                          <classesDirectory>${basedir}/javadoc</classesDirectory>
+                      </configuration>
+                  </execution>
               </executions>
-              <configuration>
-                <doclint>none</doclint>
-                <additionalparam>${javadoc.opts}</additionalparam>
-                <excludePackageNames>io.github.hse_eolang.transpiler.mediumcodemodel</excludePackageNames>
-              </configuration>
-            </plugin>
+          </plugin>
             <!-- GPG plugin -->
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>

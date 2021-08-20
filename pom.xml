@@ -5,7 +5,7 @@
   <groupId>io.github.hse-eolang</groupId>
   <artifactId>transpiler</artifactId>
   <name>eo-hse-transpiler</name>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <description>The EO Language Transcompiler by the HSE-EOLANG team</description>
   <url>https://github.com/hse-eolang/transpiler</url>
   <inceptionYear>2021</inceptionYear>
@@ -86,7 +86,7 @@
     <dependency>
       <groupId>io.github.hse-eolang</groupId>
       <artifactId>runtime</artifactId>
-      <version>LATEST</version>
+      <version>1.0.3</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>

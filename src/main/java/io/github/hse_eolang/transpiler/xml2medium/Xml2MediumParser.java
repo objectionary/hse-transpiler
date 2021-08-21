@@ -31,7 +31,7 @@ public class Xml2MediumParser {
         EOSourceFile sourceFile = FileMetadataParsingUtils.parseSourceFile(this.file, this.doc, this.xPath);
 
         ArrayList<EOAbstraction> objects = ObjectsParsingUtils.parseObjects(this.file, this.doc, this.xPath, sourceFile);
-        sourceFile.addObjects(objects.toArray(EOAbstraction[]::new));
+        sourceFile.addObjects(objects.toArray(new EOAbstraction[objects.size()]));
         return sourceFile;
     }
 

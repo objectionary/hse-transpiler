@@ -255,7 +255,7 @@ public class EOAbstraction extends EOSourceEntity {
                 commentParams.add(String.format("@param %s the object to bind to the %s.", attr.getTargetName(), attr.getDescription()));
             }
         }
-        TranslationCommons.bigComment(w, commentParams.toArray(String[]::new));
+        TranslationCommons.bigComment(w, commentParams.toArray(new String[commentParams.size()]));
         if (getScopeType().equals("anonymous")) {
             w.write(String.format("public %s(", this.anonymousName));
         }

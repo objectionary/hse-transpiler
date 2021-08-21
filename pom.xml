@@ -5,7 +5,7 @@
   <groupId>io.github.hse-eolang</groupId>
   <artifactId>transpiler</artifactId>
   <name>eo-hse-transpiler</name>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <description>The EO Language Transcompiler by the HSE-EOLANG team</description>
   <url>https://github.com/hse-eolang/transpiler</url>
   <inceptionYear>2021</inceptionYear>
@@ -67,8 +67,8 @@
     </repository>
   </distributionManagement>
   <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
     <kotlin.version>1.5.21</kotlin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -86,7 +86,7 @@
     <dependency>
       <groupId>io.github.hse-eolang</groupId>
       <artifactId>runtime</artifactId>
-      <version>1.0.3</version>
+      <version>1.0.4</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>

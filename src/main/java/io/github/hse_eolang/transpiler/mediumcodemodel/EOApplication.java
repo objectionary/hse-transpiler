@@ -323,7 +323,7 @@ public class EOApplication extends EOSourceEntity {
 
     private void transpileApplication(PicoWriter w) {
         // anonymous-abstraction based application
-        if (name.isPresent() && wrappedAbstraction != null) {
+        if (!name.isPresent() && wrappedAbstraction != null) {
             w.write(String.format("new %s(%s)", wrappedAbstraction.getAnonymousName(), wrappedAbstraction.getArgsString()));
             return;
         }

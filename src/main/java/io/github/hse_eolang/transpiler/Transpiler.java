@@ -26,7 +26,7 @@ public final class Transpiler {
      *
      * @param path The path to the XML file being compiled.
      */
-    public void compileHse(final Path path) {
+    public void compile(final Path path) {
         final File file = new File(path.toUri());
         final Xml2MediumParser xml = new Xml2MediumParser(file);
         try {
